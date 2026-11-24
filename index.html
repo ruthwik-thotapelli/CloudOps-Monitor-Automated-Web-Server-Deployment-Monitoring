@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CloudOps Monitor — Automated Web Server Deployment & Continuous Monitoring. Enterprise DevOps portfolio project showcasing Puppet, AWS EC2, Nginx, and Nagios Core.">
+  <title>CloudOps Monitor — Automated Web Server Deployment & Continuous Monitoring</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient Glow & Grid Background -->
+  <div class="bg-noise"></div>
+  <div class="grid-overlay"></div>
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+  <div class="glow-orb orb-3"></div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="site-header" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo" aria-label="CloudOps Monitor Home">
+        <div class="logo-symbol">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="8" fill="url(#logo-grad)"/>
+            <path d="M9 16L14 21L23 11" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="16" cy="16" r="11" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="2 3"/>
+            <defs>
+              <linearGradient id="logo-grad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#38bdf8"/>
+                <stop offset="1" stop-color="#6366f1"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">CloudOps<span class="accent-dot">.</span></span>
+          <span class="brand-subtitle">Monitor</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav" aria-label="Primary Navigation">
+        <ul class="nav-links">
+          <li><a href="#overview" class="nav-link">Overview</a></li>
+          <li><a href="#architecture" class="nav-link">Architecture</a></li>
+          <li><a href="#tech-stack" class="nav-link">Tech Stack</a></li>
+          <li><a href="#workflow" class="nav-link">Workflow</a></li>
+          <li><a href="#dashboard" class="nav-link">Dashboard Preview</a></li>
+          <li><a href="#objectives" class="nav-link">Objectives</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#dashboard" class="btn btn-secondary-sm">
+          <span>Dashboard preview</span>
+          <svg class="btn-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 3l5 5-5 5"/>
+          </svg>
+        </a>
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle mobile menu" aria-controls="mobileMenu" aria-expanded="false">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <ul class="mobile-nav-links">
+        <li><a href="#overview" class="mobile-link">Overview</a></li>
+        <li><a href="#architecture" class="mobile-link">Architecture</a></li>
+        <li><a href="#tech-stack" class="mobile-link">Tech Stack</a></li>
+        <li><a href="#workflow" class="mobile-link">Workflow</a></li>
+        <li><a href="#dashboard" class="mobile-link">Dashboard Preview</a></li>
+        <li><a href="#objectives" class="mobile-link">Objectives</a></li>
+      </ul>
+      <div class="mobile-menu-footer">
+        <a href="#dashboard" class="btn btn-primary btn-block">Explore Dashboard Preview</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="hero-badge reveal">
+            <span class="badge-pulse"></span>
+            <span class="badge-text">DevOps Project &bull; Infrastructure Automation &amp; Health Observability</span>
+          </div>
+
+          <h1 class="hero-title reveal">
+            Automate. Monitor.<br>
+            <span class="text-gradient">Stay Reliable.</span>
+          </h1>
+
+          <p class="hero-lead reveal">
+            An automated DevOps implementation featuring declarative Infrastructure-as-Code via <strong>Puppet</strong> on <strong>AWS EC2</strong>, high-performance web delivery with <strong>Nginx</strong>, and proactive service level health verification powered by <strong>Nagios Core</strong>.
+          </p>
+
+          <div class="hero-cta-group reveal">
+            <a href="#architecture" class="btn btn-primary">
+              <span>Explore Architecture</span>
+              <svg class="btn-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 10h10M10 5l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="#dashboard" class="btn btn-secondary">
+              <svg class="btn-icon-left" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="14" height="14" rx="2"/>
+                <path d="M3 8h14M8 17V8"/>
+              </svg>
+              <span>View Mock Dashboard</span>
+            </a>
+          </div>
+
+          <div class="hero-metrics reveal">
+            <div class="metric-item">
+              <span class="metric-value">IaC</span>
+              <span class="metric-label">Desired-state configuration</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-item">
+              <span class="metric-value">01</span>
+              <span class="metric-label">Declarative control plane</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-item">
+              <span class="metric-value">HTTP</span>
+              <span class="metric-label">Availability check design</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Animated Infrastructure Visualization Graphic -->
+        <div class="hero-visual reveal">
+          <div class="infra-stage-wrapper">
+            <div class="infra-stage-glass">
+              <div class="infra-stage-header">
+                <div class="window-dots">
+                  <span class="dot dot-red"></span>
+                  <span class="dot dot-yellow"></span>
+                  <span class="dot dot-green"></span>
+                </div>
+                <div class="window-title">cloudops-topology-mesh.diagram</div>
+                <div class="window-tag">AUTONOMOUS LOOP</div>
+              </div>
+
+              <!-- Animated Diagram Canvas -->
+              <div class="topology-canvas">
+                <svg class="topology-svg-lines" viewBox="0 0 540 380" fill="none">
+                  <!-- Connection paths with animated flow pulses -->
+                  <path id="path-ec2-puppet" d="M120,70 L270,70" stroke="rgba(56, 189, 248, 0.3)" stroke-width="2" stroke-dasharray="4 4" />
+                  <path id="path-puppet-agent" d="M270,110 L270,190" stroke="rgba(129, 140, 248, 0.4)" stroke-width="2" />
+                  <path id="path-agent-nginx" d="M270,250 L270,300 L380,300" stroke="rgba(52, 211, 153, 0.4)" stroke-width="2" />
+                  <path id="path-nagios-watch" d="M420,110 L420,270" stroke="rgba(244, 63, 94, 0.4)" stroke-width="2" stroke-dasharray="3 3"/>
+                  <path id="path-loop-feedback" d="M420,70 L330,70" stroke="rgba(168, 85, 247, 0.35)" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+                  <!-- Animated Flow Particles -->
+                  <circle r="4" fill="#38bdf8" class="pulse-particle p-1">
+                    <animateMotion dur="3s" repeatCount="indefinite" path="M120,70 L270,70" />
+                  </circle>
+                  <circle r="4" fill="#818cf8" class="pulse-particle p-2">
+                    <animateMotion dur="3s" repeatCount="indefinite" path="M270,110 L270,250" />
+                  </circle>
+                  <circle r="4" fill="#34d399" class="pulse-particle p-3">
+                    <animateMotion dur="3s" repeatCount="indefinite" path="M270,250 L270,300 L380,300" />
+                  </circle>
+                  <circle r="4" fill="#f43f5e" class="pulse-particle p-4">
+                    <animateMotion dur="2.5s" repeatCount="indefinite" path="M420,110 L420,270" />
+                  </circle>
+                </svg>
+
+                <!-- Node 1: AWS EC2 -->
+                <div class="topo-node node-ec2" style="top: 30px; left: 30px;">
+                  <div class="node-icon-box aws-color">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                      <rect x="2" y="3" width="20" height="14" rx="2"/>
+                      <path d="M8 21h8M12 17v4"/>
+                      <path d="M7 8h.01M12 8h.01M17 8h.01"/>
+                    </svg>
+                  </div>
+                  <div class="node-meta">
+                    <span class="node-badge">CLOUD HOST</span>
+                    <span class="node-name">AWS EC2</span>
+                    <span class="node-detail">Ubuntu 22.04 LTS</span>
+                  </div>
+                </div>
+
+                <!-- Node 2: Puppet Master -->
+                <div class="topo-node node-puppet" style="top: 30px; left: 210px;">
+                  <div class="node-icon-box puppet-color">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                      <circle cx="12" cy="12" r="3"/>
+                      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                    </svg>
+                  </div>
+                  <div class="node-meta">
+                    <span class="node-badge">IaC ENGINE</span>
+                    <span class="node-name">Puppet Catalog</span>
+                    <span class="node-detail">Desired State Enforcer</span>
+                  </div>
+                </div>
+
+                <!-- Node 3: Nagios Core (top right) -->
+                <div class="topo-node node-nagios" style="top: 30px; left: 370px;">
+                  <div class="node-icon-box nagios-color">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                      <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                    </svg>
+                  </div>
+                  <div class="node-meta">
+                    <span class="node-badge">OBSERVABILITY</span>
+                    <span class="node-name">Nagios Core</span>
+                    <span class="node-detail">Daemon Health Monitor</span>
+                  </div>
+                </div>
+
+                <!-- Node 4: Puppet Agent Enforcer (center) -->
+                <div class="topo-node node-agent" style="top: 170px; left: 200px;">
+                  <div class="node-icon-box agent-color">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                  </div>
+                  <div class="node-meta">
+                    <span class="node-badge">TARGET ENFORCER</span>
+                    <span class="node-name">Puppet Agent</span>
+                    <span class="node-detail">Auto-Heal Drift Cycle</span>
+                  </div>
+                </div>
+
+                <!-- Node 5: Nginx Web Server (bottom right) -->
+                <div class="topo-node node-nginx" style="top: 260px; left: 340px;">
+                  <div class="node-icon-box nginx-color">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                      <circle cx="12" cy="12" r="10"/>
+                      <polygon points="12 6 12 18 16 14 12 6"/>
+                    </svg>
+                  </div>
+                  <div class="node-meta">
+                    <span class="node-badge">WEB TIER</span>
+                    <span class="node-name">Nginx Server</span>
+                    <span class="node-detail">Static Web Port 80</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Terminal Output Ticker -->
+              <div class="stage-footer-bar">
+                <div class="status-indicator-live">
+                  <span class="status-dot"></span>
+                  <span class="status-text">Illustrative workflow • not connected to infrastructure</span>
+                </div>
+                <div class="terminal-badge">DEMO</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Project Overview Section -->
+    <section class="section-padding overview-section" id="overview">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <div class="sub-heading">PROJECT FOUNDATIONS</div>
+          <h2 class="section-title">Automating the Cloud Delivery Lifecycle</h2>
+          <p class="section-lead">
+            Traditional web infrastructure suffers from manual configuration drift, unrecorded changes, and delayed incident awareness. CloudOps Monitor replaces manual administration with programmatic idempotency and proactive observability.
+          </p>
+        </div>
+
+        <div class="cards-grid-3">
+          <!-- Card 1 -->
+          <div class="glass-card feature-card reveal">
+            <div class="card-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10 9 9 9 8 9"/>
+              </svg>
+            </div>
+            <h3 class="card-title">Declarative State Management</h3>
+            <p class="card-description">
+              Infrastructure is codified using Puppet manifests (<code class="code-span">site.pp</code>). Instead of executing manual bash scripts, administrators define <em>what</em> state the server must remain in, ensuring repeatable provisioning across fleets.
+            </p>
+            <ul class="card-feature-list">
+              <li>Deterministic package &amp; service control</li>
+              <li>Manifest version control via Git</li>
+              <li>Idempotent runs without side effects</li>
+            </ul>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="glass-card feature-card reveal">
+            <div class="card-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+              </svg>
+            </div>
+            <h3 class="card-title">Automated Drift Correction</h3>
+            <p class="card-description">
+              Accidental human modifications, unauthorized port shifts, or stopped daemons are automatically detected. During the periodic catalog run, Puppet reconciles variations back to the verified standard without human intervention.
+            </p>
+            <ul class="card-feature-list">
+              <li>Automatic remediation of stopped Nginx daemons</li>
+              <li>Protection against manual filesystem changes</li>
+              <li>Strict enforcement of file permissions (0644)</li>
+            </ul>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="glass-card feature-card reveal">
+            <div class="card-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 14 14"/>
+                <path d="M12 2v2M12 20v2M2 12h2M20 12h2"/>
+              </svg>
+            </div>
+            <h3 class="card-title">Continuous Health Observability</h3>
+            <p class="card-description">
+              Integrated Nagios Core daemon conducts high-frequency polling on critical system layers: host ICMP ping, root disk utilization, RAM saturation, and true HTTP 200 OK socket availability.
+            </p>
+            <ul class="card-feature-list">
+              <li>Granular warning/critical threshold logic</li>
+              <li>Continuous HTTP content validation</li>
+              <li>Instant alert trigger on service disruptions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. System Architecture Section -->
+    <section class="section-padding architecture-section" id="architecture">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <div class="sub-heading">END-TO-END SYSTEM PIPELINE</div>
+          <h2 class="section-title">Architectural Topology &amp; Control Plane</h2>
+          <p class="section-lead">
+            A cohesive architecture connecting cloud compute, declarative provisioning, high-concurrency web serving, and host observability.
+          </p>
+        </div>
+
+        <!-- Visual Architecture Flow Diagram -->
+        <div class="arch-flow-container reveal">
+          <div class="arch-flow-diagram">
+            <!-- Stage 1 -->
+            <div class="arch-node-box">
+              <div class="arch-step-badge">STAGE 01</div>
+              <div class="arch-node-icon aws-bg">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242M16 14l-4 4-4-4M12 12v9"/>
+                </svg>
+              </div>
+              <h4 class="arch-node-name">AWS EC2 Cloud</h4>
+              <p class="arch-node-role">Compute Foundation</p>
+              <div class="arch-node-pills">
+                <span>Ubuntu 22.04 LTS</span>
+                <span>Security Group 80/22</span>
+              </div>
+            </div>
+
+            <div class="arch-connector">
+              <svg viewBox="0 0 40 24" fill="none">
+                <path d="M0 12 H32 M24 6 L32 12 L24 18" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <!-- Stage 2 -->
+            <div class="arch-node-box highlight-box">
+              <div class="arch-step-badge">STAGE 02</div>
+              <div class="arch-node-icon puppet-bg">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                </svg>
+              </div>
+              <h4 class="arch-node-name">Puppet Master</h4>
+              <p class="arch-node-role">Declarative Compiler</p>
+              <div class="arch-node-pills">
+                <span>site.pp Manifests</span>
+                <span>Idempotent Compiler</span>
+              </div>
+            </div>
+
+            <div class="arch-connector">
+              <svg viewBox="0 0 40 24" fill="none">
+                <path d="M0 12 H32 M24 6 L32 12 L24 18" stroke="#818cf8" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <!-- Stage 3 -->
+            <div class="arch-node-box">
+              <div class="arch-step-badge">STAGE 03</div>
+              <div class="arch-node-icon agent-bg">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                </svg>
+              </div>
+              <h4 class="arch-node-name">Puppet Agent</h4>
+              <p class="arch-node-role">Target Enforcer</p>
+              <div class="arch-node-pills">
+                <span>Certificate Auth</span>
+                <span>Autonomous Sync</span>
+              </div>
+            </div>
+
+            <div class="arch-connector">
+              <svg viewBox="0 0 40 24" fill="none">
+                <path d="M0 12 H32 M24 6 L32 12 L24 18" stroke="#34d399" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <!-- Stage 4 -->
+            <div class="arch-node-box">
+              <div class="arch-step-badge">STAGE 04</div>
+              <div class="arch-node-icon nginx-bg">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <rect x="2" y="2" width="20" height="20" rx="5"/>
+                  <path d="M16 8l-8 8M8 8v8M16 8v8"/>
+                </svg>
+              </div>
+              <h4 class="arch-node-name">Nginx Web Server</h4>
+              <p class="arch-node-role">Production Service</p>
+              <div class="arch-node-pills">
+                <span>/var/www/html</span>
+                <span>TCP Port 80 Active</span>
+              </div>
+            </div>
+
+            <div class="arch-connector">
+              <svg viewBox="0 0 40 24" fill="none">
+                <path d="M0 12 H32 M24 6 L32 12 L24 18" stroke="#f43f5e" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <!-- Stage 5 -->
+            <div class="arch-node-box">
+              <div class="arch-step-badge">STAGE 05</div>
+              <div class="arch-node-icon nagios-bg">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <circle cx="12" cy="11" r="3"/>
+                </svg>
+              </div>
+              <h4 class="arch-node-name">Nagios Core</h4>
+              <p class="arch-node-role">Health Verification</p>
+              <div class="arch-node-pills">
+                <span>check_http</span>
+                <span>check_disk &amp; CPU</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Deep-dive Architecture Cards -->
+          <div class="arch-breakdown-grid">
+            <div class="glass-card arch-card">
+              <div class="arch-card-header">
+                <span class="step-num">01</span>
+                <h4>Provisioning &amp; Manifest Execution</h4>
+              </div>
+              <p>
+                AWS EC2 virtual machines are initialized with baseline network rules and SSH keys. The Puppet agent periodically executes runs against the manifest, validating that the <code class="code-span">nginx</code> package is installed, the service is enabled on boot, and document roots have strict permissions.
+              </p>
+            </div>
+
+            <div class="glass-card arch-card">
+              <div class="arch-card-header">
+                <span class="step-num">02</span>
+                <h4>Continuous Health Checking</h4>
+              </div>
+              <p>
+                Nagios Core continuously polls the provisioned web server using active check plugins. The <code class="code-span">check_http</code> plugin queries port 80, expecting a status code of HTTP 200 and verifying header response latency within predefined SLA thresholds.
+              </p>
+            </div>
+
+            <div class="glass-card arch-card">
+              <div class="arch-card-header">
+                <span class="step-num">03</span>
+                <h4>Self-Healing &amp; Verification</h4>
+              </div>
+              <p>
+                If an administrator accidentally terminates Nginx or alters server configurations, Nagios transitions the service to a <strong>CRITICAL</strong> state. Upon the next Puppet cycle, the agent re-starts Nginx and restores files, prompting Nagios to automatically resolve back to <strong>OK</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Technology Stack Section -->
+    <section class="section-padding tech-stack-section" id="tech-stack">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <div class="sub-heading">ENGINEERING FOUNDATION</div>
+          <h2 class="section-title">Technologies &amp; Toolchain</h2>
+          <p class="section-lead">
+            Every technology in this stack was carefully selected to simulate a real-world enterprise cloud deployment, emphasizing stability, idempotency, and automated recovery.
+          </p>
+        </div>
+
+        <div class="cards-grid-4">
+          <!-- Tech 1: AWS EC2 -->
+          <div class="glass-card tech-card reveal">
+            <div class="tech-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.75">
+                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+            </div>
+            <div class="tech-category">CLOUD COMPUTE</div>
+            <h3 class="tech-title">AWS EC2</h3>
+            <p class="tech-desc">Elastic Compute Cloud virtual instances hosting both our Puppet configuration controller and production web targets.</p>
+            <div class="tech-tag">Elastic Scalability</div>
+          </div>
+
+          <!-- Tech 2: Ubuntu Linux -->
+          <div class="glass-card tech-card reveal">
+            <div class="tech-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#e11d48" stroke-width="1.75">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="4"/>
+                <line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/>
+                <line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/>
+                <line x1="14.83" y1="9.17" x2="19.07" y2="4.93"/>
+                <line x1="4.93" y1="19.07" x2="9.17" y2="14.83"/>
+              </svg>
+            </div>
+            <div class="tech-category">OPERATING SYSTEM</div>
+            <h3 class="tech-title">Ubuntu Linux</h3>
+            <p class="tech-desc">Ubuntu 22.04 LTS (Jammy Jellyfish) server OS providing robust Linux kernel stability, systemd service supervision, and secure repositories.</p>
+            <div class="tech-tag">Linux Kernel 5.15+</div>
+          </div>
+
+          <!-- Tech 3: Puppet -->
+          <div class="glass-card tech-card reveal">
+            <div class="tech-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.75">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+              </svg>
+            </div>
+            <div class="tech-category">CONFIG MANAGEMENT</div>
+            <h3 class="tech-title">Puppet</h3>
+            <p class="tech-desc">Enterprise declarative configuration automation tool ensuring zero drift across packages, services, configuration templates, and files.</p>
+            <div class="tech-tag">Declarative DSL</div>
+          </div>
+
+          <!-- Tech 4: Nginx -->
+          <div class="glass-card tech-card reveal">
+            <div class="tech-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.75">
+                <circle cx="12" cy="12" r="10"/>
+                <polygon points="12 6 12 18 16 14 12 6"/>
+              </svg>
+            </div>
+            <div class="tech-category">WEB DELIVERY</div>
+            <h3 class="tech-title">Nginx Web Server</h3>
+            <p class="tech-desc">Asynchronous, event-driven web server hosting static assets with high throughput, low memory footprint, and HTTP/1.1 compliance.</p>
+            <div class="tech-tag">High Concurrency</div>
+          </div>
+
+          <!-- Tech 5: Nagios Core -->
+          <div class="glass-card tech-card reveal">
+            <div class="tech-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.75">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+              </svg>
+            </div>
+            <div class="tech-category">INFRASTRUCTURE HEALTH</div>
+            <h3 class="tech-title">Nagios Core</h3>
+            <p class="tech-desc">Industry-standard open source server and network monitoring daemon providing continuous status polling, alert thresholds, and incident detection.</p>
+            <div class="tech-tag">Active Health Probes</div>
+          </div>
+
+          <!-- Tech 6: HTML5 -->
+          <div class="glass-card tech-card reveal">
+            <div class="tech-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="1.75">
+                <polyline points="4 7 4 4 20 4 20 7"/>
+                <line x1="9" y1="20" x2="15" y2="20"/>
+                <line x1="12" y1="4" x2="12" y2="20"/>
+              </svg>
+            </div>
+            <div class="tech-category">MARKUP &amp; SEMANTICS</div>
+            <h3 class="tech-title">HTML5</h3>
+            <p class="tech-desc">Semantic, accessible document structure strictly aligned with modern W3C standards without heavy client-side framework bloat.</p>
+            <div class="tech-tag">W3C Standard</div>
+          </div>
+
+          <!-- Tech 7: CSS3 -->
+          <div class="glass-card tech-card reveal">
+            <div class="tech-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.75">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </div>
+            <div class="tech-category">STYLING ARCHITECTURE</div>
+            <h3 class="tech-title">Modern CSS3</h3>
+            <p class="tech-desc">Hardware-accelerated animations, CSS custom properties, backdrop blur glassmorphism, responsive grid layouts, and zero external runtime.</p>
+            <div class="tech-tag">Glassmorphic UI</div>
+          </div>
+
+          <!-- Tech 8: Vanilla JavaScript -->
+          <div class="glass-card tech-card reveal">
+            <div class="tech-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#eab308" stroke-width="1.75">
+                <polyline points="16 18 22 12 16 6"/>
+                <polyline points="8 6 2 12 8 18"/>
+              </svg>
+            </div>
+            <div class="tech-category">CLIENT-SIDE LOGIC</div>
+            <h3 class="tech-title">Vanilla JS</h3>
+            <p class="tech-desc">Lightweight native ECMAScript handling smooth scrolling, dynamic tabs, interactive mock simulations, and viewport intersection animations.</p>
+            <div class="tech-tag">Zero Dependency</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Deployment Workflow Section -->
+    <section class="section-padding workflow-section" id="workflow">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <div class="sub-heading">LIFECYCLE MANAGEMENT</div>
+          <h2 class="section-title">End-to-End Deployment &amp; Recovery Workflow</h2>
+          <p class="section-lead">
+            Explore the multi-phase deployment pipeline from initial EC2 cloud provisioning to declarative convergence and continuous Nagios health verification.
+          </p>
+        </div>
+
+        <!-- Interactive Workflow Stepper -->
+        <div class="workflow-stepper reveal">
+          <div class="stepper-nav" role="tablist" aria-label="Deployment workflow phases">
+            <button class="step-btn active" id="workflow-tab-1" role="tab" aria-selected="true" aria-controls="step-panel-1" tabindex="0" data-step="1">
+              <span class="step-circle">1</span>
+              <span class="step-title">Server Bootstrap</span>
+            </button>
+            <button class="step-btn" id="workflow-tab-2" role="tab" aria-selected="false" aria-controls="step-panel-2" tabindex="-1" data-step="2">
+              <span class="step-circle">2</span>
+              <span class="step-title">Puppet Manifest</span>
+            </button>
+            <button class="step-btn" id="workflow-tab-3" role="tab" aria-selected="false" aria-controls="step-panel-3" tabindex="-1" data-step="3">
+              <span class="step-circle">3</span>
+              <span class="step-title">Drift Detection</span>
+            </button>
+            <button class="step-btn" id="workflow-tab-4" role="tab" aria-selected="false" aria-controls="step-panel-4" tabindex="-1" data-step="4">
+              <span class="step-circle">4</span>
+              <span class="step-title">Nagios Monitoring</span>
+            </button>
+            <button class="step-btn" id="workflow-tab-5" role="tab" aria-selected="false" aria-controls="step-panel-5" tabindex="-1" data-step="5">
+              <span class="step-circle">5</span>
+              <span class="step-title">Failure &amp; Recovery</span>
+            </button>
+          </div>
+
+          <!-- Step Content Cards -->
+          <div class="stepper-panels">
+            <!-- Step 1 Panel -->
+            <div class="step-panel active" id="step-panel-1" role="tabpanel" aria-labelledby="workflow-tab-1" aria-hidden="false">
+              <div class="panel-grid">
+                <div class="panel-info">
+                  <div class="panel-tag">PHASE 01: PROVISIONING</div>
+                  <h3>AWS EC2 Infrastructure Bootstrapping</h3>
+                  <p>
+                    The workflow starts with spinning up clean Ubuntu 22.04 LTS instances in an Amazon VPC. Security groups are configured with ingress rules for SSH (port 22) and HTTP (port 80), along with standard outbound egress.
+                  </p>
+                  <ul class="workflow-check-list">
+                    <li>AWS EC2 t2.micro or t3.small compute initialization</li>
+                    <li>Elastic IP and VPC Security Group association</li>
+                    <li>Secure SSH keypair authentication &amp; base apt updates</li>
+                  </ul>
+                </div>
+                <div class="panel-code">
+                  <div class="code-box-header">
+                    <span class="code-dot"></span>
+                    <span class="code-file">bash &bull; cloud-init.sh</span>
+                  </div>
+                  <pre class="code-content"><code><span class="c-comment"># Update package index and install Puppet</span>
+sudo apt-get update -y
+sudo apt-get install -y wget curl gnupg2
+
+<span class="c-comment"># Configure Puppet 7 repository</span>
+wget https://apt.puppet.com/puppet7-release-jammy.deb
+sudo dpkg -i puppet7-release-jammy.deb
+sudo apt-get update -y
+sudo apt-get install -y puppet-agent
+
+<span class="c-comment"># Verify Puppet agent binary</span>
+/opt/puppetlabs/bin/puppet --version</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2 Panel -->
+            <div class="step-panel" id="step-panel-2" role="tabpanel" aria-labelledby="workflow-tab-2" aria-hidden="true">
+              <div class="panel-grid">
+                <div class="panel-info">
+                  <div class="panel-tag">PHASE 02: AUTOMATION</div>
+                  <h3>Declarative Puppet Configuration</h3>
+                  <p>
+                    Rather than manually running <code class="code-span">apt install nginx</code>, our configuration is codified in <code class="code-span">/etc/puppetlabs/code/environments/production/manifests/site.pp</code>.
+                  </p>
+                  <ul class="workflow-check-list">
+                    <li>Package resource guarantees Nginx presence</li>
+                    <li>File resource delivers the static portfolio assets</li>
+                    <li>Service resource enforces running state &amp; startup on boot</li>
+                  </ul>
+                </div>
+                <div class="panel-code">
+                  <div class="code-box-header">
+                    <span class="code-dot"></span>
+                    <span class="code-file">puppet &bull; site.pp</span>
+                  </div>
+                  <pre class="code-content"><code><span class="c-keyword">node</span> <span class="c-string">'webserver.cloudops.internal'</span> {
+  <span class="c-comment"># Ensure Nginx package is installed</span>
+  <span class="c-keyword">package</span> { <span class="c-string">'nginx'</span>:
+    <span class="c-attr">ensure</span> => <span class="c-string">'installed'</span>,
+  }
+
+  <span class="c-comment"># Ensure service is always active and enabled</span>
+  <span class="c-keyword">service</span> { <span class="c-string">'nginx'</span>:
+    <span class="c-attr">ensure</span>    => <span class="c-string">'running'</span>,
+    <span class="c-attr">enable</span>    => <span class="c-keyword">true</span>,
+    <span class="c-attr">require</span>   => <span class="c-keyword">Package</span>[<span class="c-string">'nginx'</span>],
+  }
+
+  <span class="c-comment"># Deploy static website bundle</span>
+  <span class="c-keyword">file</span> { <span class="c-string">'/var/www/html/index.html'</span>:
+    <span class="c-attr">ensure</span>  => <span class="c-string">'file'</span>,
+    <span class="c-attr">source</span>  => <span class="c-string">'puppet:///modules/web/index.html'</span>,
+    <span class="c-attr">mode</span>    => <span class="c-string">'0644'</span>,
+    <span class="c-attr">notify</span>  => <span class="c-keyword">Service</span>[<span class="c-string">'nginx'</span>],
+  }
+}</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3 Panel -->
+            <div class="step-panel" id="step-panel-3" role="tabpanel" aria-labelledby="workflow-tab-3" aria-hidden="true">
+              <div class="panel-grid">
+                <div class="panel-info">
+                  <div class="panel-tag">PHASE 03: DRIFT DEFENSE</div>
+                  <h3>Continuous Configuration Drift Correction</h3>
+                  <p>
+                    When unauthorized staff tamper with the server (e.g. stopping Nginx, altering HTML files, or messing with permissions), Puppet detects the divergence during its periodic catalog execution and silently reverts to the declared golden image.
+                  </p>
+                  <ul class="workflow-check-list">
+                    <li>30-minute automated cron enforcement cycle</li>
+                    <li>Immediate state convergence without downtime</li>
+                    <li>Audit logging of all resource modifications</li>
+                  </ul>
+                </div>
+                <div class="panel-code">
+                  <div class="code-box-header">
+                    <span class="code-dot"></span>
+                    <span class="code-file">bash &bull; puppet-agent-run.log</span>
+                  </div>
+                  <pre class="code-content"><code><span class="c-comment"># Execution notice during drift detection:</span>
+Notice: /Stage[main]/Main/Node[webserver]/Service[nginx]/ensure:
+  ensure changed 'stopped' to 'running'
+Notice: /Stage[main]/Main/Node[webserver]/File[/var/www/html/index.html]/content:
+  content changed '{md5}4a88bc3b' to '{md5}71d99e01'
+Notice: Applied catalog in 1.48 seconds
+Info: Computing checksum on file /var/www/html/index.html
+Info: FileBucket adding {md5}4a88bc3b
+<span class="c-keyword">[SUCCESS]</span> Target node restored to golden desired state.</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4 Panel -->
+            <div class="step-panel" id="step-panel-4" role="tabpanel" aria-labelledby="workflow-tab-4" aria-hidden="true">
+              <div class="panel-grid">
+                <div class="panel-info">
+                  <div class="panel-tag">PHASE 04: OBSERVABILITY</div>
+                  <h3>Nagios Core Health Polling</h3>
+                  <p>
+                    Nagios Core continuously probes the live web server across both network and operating system layers. Any breached threshold moves through <code class="code-span">SOFT</code> retries to <code class="code-span">HARD</code> alerts.
+                  </p>
+                  <ul class="workflow-check-list">
+                    <li><code class="code-span">check_ping</code>: Packets transmitted, RTT response latency</li>
+                    <li><code class="code-span">check_http</code>: Validates HTTP 200 code &amp; payload under 200ms</li>
+                    <li><code class="code-span">check_disk</code> &amp; CPU: Resource saturation triggers warnings</li>
+                  </ul>
+                </div>
+                <div class="panel-code">
+                  <div class="code-box-header">
+                    <span class="code-dot"></span>
+                    <span class="code-file">cfg &bull; /usr/local/nagios/etc/objects/webserver.cfg</span>
+                  </div>
+                  <pre class="code-content"><code><span class="c-keyword">define service</span> {
+    <span class="c-attr">use</span>                     generic-service
+    <span class="c-attr">host_name</span>               webserver-ec2
+    <span class="c-attr">service_description</span>     HTTP Web Availability
+    <span class="c-attr">check_command</span>           check_http!-u / -p 80 -t 5
+    <span class="c-attr">check_interval</span>          1
+    <span class="c-attr">retry_interval</span>          1
+    <span class="c-attr">max_check_attempts</span>      3
+    <span class="c-attr">notification_interval</span>   30
+}</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 5 Panel -->
+            <div class="step-panel" id="step-panel-5" role="tabpanel" aria-labelledby="workflow-tab-5" aria-hidden="true">
+              <div class="panel-grid">
+                <div class="panel-info">
+                  <div class="panel-tag">PHASE 05: RESILIENCE</div>
+                  <h3>Simulated Failure &amp; Automated Recovery</h3>
+                  <p>
+                    To validate the DevOps resilience loop for our viva demonstration, we deliberately induce an outage by shutting down the Nginx process: <code class="code-span">sudo systemctl stop nginx</code>.
+                  </p>
+                  <ul class="workflow-check-list">
+                    <li>Nagios flags CRITICAL: Connection refused on port 80</li>
+                    <li>Puppet agent kicks off catalog reconciliation</li>
+                    <li>Nginx service is restarted automatically; Nagios returns to OK</li>
+                  </ul>
+                </div>
+                <div class="panel-code">
+                  <div class="code-box-header">
+                    <span class="code-dot"></span>
+                    <span class="code-file">bash &bull; viva-demo-simulation.sh</span>
+                  </div>
+                  <pre class="code-content"><code><span class="c-comment"># Step 1: Deliberately break the service</span>
+$ sudo systemctl stop nginx
+
+<span class="c-comment"># Step 2: Nagios polls and detects outage</span>
+[12:04:12] CRITICAL - Connection refused (port 80)
+
+<span class="c-comment"># Step 3: Trigger Puppet agent reconciliation</span>
+$ sudo /opt/puppetlabs/bin/puppet agent -t
+Notice: /Service[nginx]/ensure: ensure changed 'stopped' to 'running'
+
+<span class="c-comment"># Step 4: Nagios automatically returns to OK</span>
+[12:04:45] OK - HTTP/1.1 200 OK - 1.48 KB in 0.002s - 200 OK</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Project Demonstration / Monitoring Dashboard Preview -->
+    <section class="section-padding dashboard-section" id="dashboard">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <div class="sub-heading">OBSERVABILITY CONSOLE PREVIEW</div>
+          <h2 class="section-title">Nagios Core Monitoring Dashboard Preview</h2>
+          <p class="section-lead">
+            An illustrative Nagios-style console layout for demonstrating the kinds of host and service checks this architecture is designed to run.
+          </p>
+          <div class="static-preview-disclaimer">
+            <svg class="info-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="10" cy="10" r="8"/>
+              <line x1="10" y1="8" x2="10" y2="12"/>
+              <circle cx="10" cy="14" r="0.5" fill="currentColor"/>
+            </svg>
+            <span><strong>DEMO / STATIC PREVIEW ONLY:</strong> Every host, service status, metric, timestamp, and check result below is illustrative sample content. Nothing on this page is connected to an AWS account, monitoring server, production database, or live backend.</span>
+          </div>
+        </div>
+
+        <!-- Dashboard Window Component -->
+        <div class="dashboard-window reveal">
+          <!-- Top Window Frame -->
+          <div class="dash-window-header">
+            <div class="window-controls">
+              <span class="win-circle win-red"></span>
+              <span class="win-circle win-yellow"></span>
+              <span class="win-circle win-green"></span>
+            </div>
+            <div class="dash-url-bar">
+              <svg class="lock-icon" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6V4a4 4 0 0 1 8 0v2h1a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1zm2 0h4V4a2 2 0 1 0-4 0v2z"/>
+              </svg>
+              <span>demo://nagios-console</span>
+              <span class="env-pill">STATIC DEMO • NO LIVE DATA</span>
+            </div>
+            <div class="dash-refresh-action">
+              <button class="btn-refresh" id="simulateHealBtn" title="Simulate Fault &amp; Self-Healing">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+                </svg>
+                <span>Simulate Drift &amp; Heal</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Dashboard Internal Grid -->
+          <div class="demo-ribbon">STATIC PREVIEW • ALL STATUSES, METRICS, AND CHECK OUTPUTS ARE SIMULATED EXAMPLES</div>
+          <div class="dash-body">
+            <!-- Sidebar Navigation of Nagios -->
+            <aside class="dash-sidebar">
+              <div class="nagios-brand">
+                <span class="nagios-logo-text">NAGIOS<span class="brand-ver">CORE 4.4</span></span>
+              </div>
+              <div class="sidebar-group">
+                <span class="group-title">DEMO STATUS</span>
+                <ul>
+                  <li class="active"><a href="#dashboard">Tactical Overview</a></li>
+                  <li><a href="#dashboard">Host Detail</a></li>
+                  <li><a href="#dashboard">Service Detail</a></li>
+                  <li><a href="#dashboard">Service Problems (0)</a></li>
+                </ul>
+              </div>
+              <div class="sidebar-group">
+                <span class="group-title">REPORTS</span>
+                <ul>
+                  <li><a href="#dashboard">Availability example</a></li>
+                  <li><a href="#dashboard">State History</a></li>
+                  <li><a href="#dashboard">Notifications</a></li>
+                </ul>
+              </div>
+              <div class="sidebar-group">
+                <span class="group-title">SYSTEM</span>
+                <ul>
+                  <li><a href="#dashboard">Process Info</a></li>
+                  <li><a href="#dashboard">Performance Info</a></li>
+                </ul>
+              </div>
+            </aside>
+
+            <!-- Main Status Grid -->
+            <div class="dash-main-content">
+              <!-- Summary Scorecards -->
+              <div class="status-scorecards">
+                <div class="scorecard status-ok" id="cardHostStatus">
+                  <div class="scorecard-top">
+                    <span class="scorecard-title">DEMO · HOST STATUS</span>
+                    <span class="badge-status badge-ok" id="badgeHost">UP</span>
+                  </div>
+                  <div class="scorecard-val" id="valHost">1 Host Up</div>
+                  <div class="scorecard-sub">AWS EC2 (Ubuntu 22.04 LTS)</div>
+                </div>
+
+                <div class="scorecard status-ok" id="cardHttpService">
+                  <div class="scorecard-top">
+                    <span class="scorecard-title">DEMO · HTTP SERVICE (PORT 80)</span>
+                    <span class="badge-status badge-ok" id="badgeHttp">OK</span>
+                  </div>
+                  <div class="scorecard-val" id="valHttp">HTTP/1.1 200 OK</div>
+                  <div class="scorecard-sub" id="subHttp">Response Time: 2.14 ms</div>
+                </div>
+
+                <div class="scorecard status-ok" id="cardPuppetSync">
+                  <div class="scorecard-top">
+                    <span class="scorecard-title">DEMO · PUPPET AGENT</span>
+                    <span class="badge-status badge-ok" id="badgePuppet">IN SYNC</span>
+                  </div>
+                  <div class="scorecard-val" id="valPuppet">Zero Drift</div>
+                  <div class="scorecard-sub" id="subPuppet">Catalog applied 4m ago</div>
+                </div>
+
+                <div class="scorecard status-ok">
+                  <div class="scorecard-top">
+                    <span class="scorecard-title">DEMO · AVAILABILITY EXAMPLE</span>
+                    <span class="badge-status badge-ok">99.98%</span>
+                  </div>
+                  <div class="scorecard-val">0 Outages</div>
+                  <div class="scorecard-sub">Last 30-day window</div>
+                </div>
+              </div>
+
+              <!-- Service Detail Table -->
+              <div class="table-container">
+                <div class="table-header-bar">
+                  <span class="table-title">Illustrative service check results • static preview</span>
+                  <span class="table-meta">DEMO HOST: <code class="code-span">webserver.example.test</code> · illustrative values only</span>
+                </div>
+                <div class="responsive-table-wrapper">
+                  <table class="monitoring-table">
+                    <thead>
+                      <tr>
+                        <th>Host</th>
+                        <th>Service</th>
+                        <th>Status</th>
+                        <th>Last Check</th>
+                        <th>Duration</th>
+                        <th>Attempt</th>
+                        <th>Status Information</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr id="row-ping">
+                        <td class="font-mono">webserver-01</td>
+                        <td class="service-name">
+                          <span class="service-icon">🌐</span> PING Check
+                        </td>
+                        <td><span class="status-chip chip-ok" id="chipPing">OK</span></td>
+                        <td class="font-mono text-muted">2 mins ago</td>
+                        <td class="font-mono text-muted">14d 6h 22m</td>
+                        <td class="font-mono">1/3</td>
+                        <td class="status-msg" id="msgPing">PING OK - Packet loss = 0%, RTA = 0.48 ms</td>
+                      </tr>
+                      <tr id="row-http">
+                        <td class="font-mono">webserver-01</td>
+                        <td class="service-name">
+                          <span class="service-icon">⚡</span> HTTP Availability
+                        </td>
+                        <td><span class="status-chip chip-ok" id="chipHttp">OK</span></td>
+                        <td class="font-mono text-muted">1 min ago</td>
+                        <td class="font-mono text-muted">14d 6h 20m</td>
+                        <td class="font-mono">1/3</td>
+                        <td class="status-msg" id="msgHttp">HTTP OK: HTTP/1.1 200 OK - 1532 bytes in 0.003s response time</td>
+                      </tr>
+                      <tr id="row-disk">
+                        <td class="font-mono">webserver-01</td>
+                        <td class="service-name">
+                          <span class="service-icon">💾</span> Root Partition Disk
+                        </td>
+                        <td><span class="status-chip chip-ok">OK</span></td>
+                        <td class="font-mono text-muted">4 mins ago</td>
+                        <td class="font-mono text-muted">14d 6h 15m</td>
+                        <td class="font-mono">1/3</td>
+                        <td class="status-msg">DISK OK - free space: / 18.2 GB (78% inode=91%):</td>
+                      </tr>
+                      <tr id="row-nginx-proc">
+                        <td class="font-mono">webserver-01</td>
+                        <td class="service-name">
+                          <span class="service-icon">⚙️</span> Nginx Process Daemon
+                        </td>
+                        <td><span class="status-chip chip-ok" id="chipProc">OK</span></td>
+                        <td class="font-mono text-muted">1 min ago</td>
+                        <td class="font-mono text-muted">14d 6h 18m</td>
+                        <td class="font-mono">1/3</td>
+                        <td class="status-msg" id="msgProc">PROCS OK: 2 processes with command name 'nginx'</td>
+                      </tr>
+                      <tr id="row-ssh">
+                        <td class="font-mono">webserver-01</td>
+                        <td class="service-name">
+                          <span class="service-icon">🔒</span> SSH Security Port
+                        </td>
+                        <td><span class="status-chip chip-ok">OK</span></td>
+                        <td class="font-mono text-muted">3 mins ago</td>
+                        <td class="font-mono text-muted">14d 6h 21m</td>
+                        <td class="font-mono">1/3</td>
+                        <td class="status-msg">SSH OK - OpenSSH_8.9p1 Ubuntu-3ubuntu0.6 (port 22)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Simulated dashboard interaction -->
+              <div class="simulation-feedback-box" id="simulationFeedback" role="status" aria-live="polite" aria-atomic="true">
+                <div class="sim-icon">💡</div>
+                <div class="sim-text">
+                  <strong>Interactive viva demonstration:</strong> Click the <em>"Simulate Drift &amp; Heal"</em> button above to watch how Nagios responds when the web service fails, and how Puppet automatically heals it back to an OK state.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Project Objectives Section -->
+    <section class="section-padding objectives-section" id="objectives">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <div class="sub-heading">ACADEMIC &amp; ENGINEERING GOALS</div>
+          <h2 class="section-title">Core Project Objectives &amp; Achievements</h2>
+          <p class="section-lead">
+            Demonstrating how contemporary DevOps principles transform manual server management into an automated, auditable, and resilient production infrastructure.
+          </p>
+        </div>
+
+        <div class="cards-grid-4">
+          <!-- Objective 1 -->
+          <div class="glass-card objective-card reveal">
+            <div class="objective-header">
+              <span class="obj-num">01</span>
+              <span class="obj-status-badge">PROJECT GOAL</span>
+            </div>
+            <h3 class="obj-title">Infrastructure Automation</h3>
+            <p class="obj-desc">
+              Eliminate manual SSH provisioning commands. All server configuration (Nginx installation, systemd daemon management, static asset placement) is codified into reusable, version-controlled Puppet manifests.
+            </p>
+            <div class="obj-metric-tag">100% Codified Provisioning</div>
+          </div>
+
+          <!-- Objective 2 -->
+          <div class="glass-card objective-card reveal">
+            <div class="objective-header">
+              <span class="obj-num">02</span>
+              <span class="obj-status-badge">PROJECT GOAL</span>
+            </div>
+            <h3 class="obj-title">Configuration Consistency</h3>
+            <p class="obj-desc">
+              Enforce idempotency across the computing environment. Regardless of whether a manifest executes once or hundreds of times, the resulting server state remains identical, completely eradicating snowflake servers.
+            </p>
+            <div class="obj-metric-tag">Zero Configuration Drift</div>
+          </div>
+
+          <!-- Objective 3 -->
+          <div class="glass-card objective-card reveal">
+            <div class="objective-header">
+              <span class="obj-num">03</span>
+              <span class="obj-status-badge">PROJECT GOAL</span>
+            </div>
+            <h3 class="obj-title">Availability Monitoring</h3>
+            <p class="obj-desc">
+              Implement proactive observability using Nagios Core. Track end-to-end HTTP response codes, latency roundtrips, CPU load thresholds, and partition quotas with automatic notification triggers.
+            </p>
+            <div class="obj-metric-tag">Active Health Polling</div>
+          </div>
+
+          <!-- Objective 4 -->
+          <div class="glass-card objective-card reveal">
+            <div class="objective-header">
+              <span class="obj-num">04</span>
+              <span class="obj-status-badge">PROJECT GOAL</span>
+            </div>
+            <h3 class="obj-title">Resilience &amp; Verification</h3>
+            <p class="obj-desc">
+              Empirically verify disaster recovery and self-healing. When services are intentionally crashed or configuration files modified, Puppet actively repairs the defect, and Nagios validates immediate restoration.
+            </p>
+            <div class="obj-metric-tag">Automated Remediation Loop</div>
+          </div>
+        </div>
+
+        <!-- Viva & Examination Highlights Callout -->
+        <div class="viva-callout-card reveal">
+          <div class="viva-left">
+            <div class="viva-badge">VIVA / PRESENTATION DEFENSE READY</div>
+            <h3>Why Puppet &amp; Nagios Over Manual Scripts?</h3>
+            <p>
+              Bash scripts lack idempotency and require complex error-handling conditions. Puppet provides a declared state engine that only modifies resources when variance exists. Coupled with Nagios Core's independent external watchdog, our architecture establishes an automated cycle of continuous deployment and proactive health verification.
+            </p>
+          </div>
+          <div class="viva-right">
+            <div class="stat-pill">
+              <span class="pill-title">Deployment Target</span>
+              <span class="pill-value">AWS EC2 (Ubuntu 22.04 LTS)</span>
+            </div>
+            <div class="stat-pill">
+              <span class="pill-title">Web Delivery Engine</span>
+              <span class="pill-value">Nginx 1.18+ (Port 80)</span>
+            </div>
+            <div class="stat-pill">
+              <span class="pill-title">IaC Engine</span>
+              <span class="pill-value">Puppet Declarative Manifests</span>
+            </div>
+            <div class="stat-pill">
+              <span class="pill-title">Health Verifier</span>
+              <span class="pill-value">Nagios Core Active Check Daemon</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <div class="logo-symbol">
+              <svg viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="8" fill="url(#footer-logo-grad)"/>
+                <path d="M9 16L14 21L23 11" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <defs>
+                  <linearGradient id="footer-logo-grad" x1="0" y1="0" x2="32" y2="32">
+                    <stop stop-color="#38bdf8"/>
+                    <stop offset="1" stop-color="#6366f1"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="brand-text">
+              <span class="brand-title">CloudOps<span class="accent-dot">.</span></span>
+              <span class="brand-subtitle">Monitor</span>
+            </div>
+          </div>
+          <p class="footer-tagline">
+            Automated Web Server Deployment &amp; Continuous Monitoring. A modern, resilient cloud infrastructure project built with Puppet, AWS EC2, Nginx, and Nagios Core.
+          </p>
+        </div>
+
+        <div class="footer-nav-col">
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#overview">Project Overview</a></li>
+            <li><a href="#architecture">Architecture Flow</a></li>
+            <li><a href="#tech-stack">Technology Stack</a></li>
+            <li><a href="#workflow">Deployment Workflow</a></li>
+            <li><a href="#dashboard">Dashboard Preview</a></li>
+            <li><a href="#objectives">Project Objectives</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-nav-col">
+          <h4 class="footer-col-title">Technology Stack</h4>
+          <ul class="footer-links">
+            <li><span>AWS EC2 &amp; Ubuntu 22.04 LTS</span></li>
+            <li><span>Puppet 7 Configuration Engine</span></li>
+            <li><span>Nginx Web Server</span></li>
+            <li><span>Nagios Core 4.4 Health Watch</span></li>
+            <li><span>HTML5 &bull; CSS3 &bull; Vanilla JavaScript</span></li>
+          </ul>
+        </div>
+
+        <div class="footer-nav-col">
+          <h4 class="footer-col-title">Project Context</h4>
+          <p class="footer-note">
+            Developed as an enterprise DevOps academic capstone project. Optimized for production deployment on Linux EC2 instances running Nginx.
+          </p>
+          <div class="badge-repo">
+            <span class="repo-circle"></span>
+            <span>Static demo • no live telemetry</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 CloudOps Monitor Project. Designed with precision, dark glassmorphism &amp; cloud engineering rigor.</p>
+        <div class="footer-badges">
+          <span class="footer-pill">Zero Build Tools</span>
+          <span class="footer-pill">Pure Native Web</span>
+          <span class="footer-pill">Nginx Ready</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Vanilla JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
