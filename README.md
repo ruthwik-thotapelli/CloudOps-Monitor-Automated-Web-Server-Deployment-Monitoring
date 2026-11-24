@@ -1,0 +1,2 @@
+# CloudOps-Monitor-Automated-Web-Server-Deployment-Monitoring
+CloudOps Monitor automates web server deployment and configuration using Puppet on AWS EC2. Nginx hosts a static website, while Nagios Core monitors server health and HTTP availability. The project demonstrates automated deployment, configuration drift correction, failure detection, and recovery verification through practical testing in cloud labs.
